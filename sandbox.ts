@@ -1,49 +1,28 @@
-// explicit types
-let character: string;
-let age: number;
-let isLoggedIn: boolean;
+/* any type */
 
-// age = 'luigi'
-age = 30;
+// 아래의 모든 것들이 잘 동작한다.
+let age: any = 25;
+age = true;
+console.log(age);
+age = 'hello';
+console.log(age);
+age = { name: 'luigi' };
+console.log(age);
 
-//isLoggedIN = 25;
-isLoggedIn = true;
+// 아래의 모든 것들이 다 동작한다.
+let mixed: any[] = [];
 
-// arrays
-let ninjas: string[] = [];
-// ninjas = [10,23] //! 안된다.
-// ninjas = ['yoshi', 'mario']; //! 된다.
-
-ninjas.push('shaun');
-
-// union types
-let mixed: (string | number)[] = [];
-mixed.push('hello');
-mixed.push(20);
-// mixed.push(false) //!  불가!
-// let mixed: (string | number | boolean)[] = [];
+mixed.push(5);
+mixed.push('mario');
+mixed.push(false);
 console.log(mixed);
 
-let uid: string | number = 'hi';
-
-//objects
-// * 아래도 가능하긴 하다. 하지만 권장하지 않음
-let ninjaOne: object;
-ninjaOne = {
-  name: 'yoshi',
-  age: 30,
+let ninja: { name: any; age: any } = {
+  name: 'hi',
+  age: 'hi',
 };
 
-//! 사전에 설정한 것이다.
-let ninjaTwo: {
-  name: string;
-  age: number;
-  beltColor: string;
-};
-
-ninjaTwo = {
-  name: 'mario',
-  age: 20,
-  beltColor: 'black',
-  //   skills: [], //! 이부분은 실행되지 않음
+ninja = {
+  name: 25,
+  age: 'yoshi',
 };
