@@ -1,23 +1,15 @@
-/* any type */
-// 아래의 모든 것들이 잘 동작한다.
-var age = 25;
-age = true;
-console.log(age);
-age = 'hello';
-console.log(age);
-age = { name: 'luigi' };
-console.log(age);
-// 아래의 모든 것들이 다 동작한다.
-var mixed = [];
-mixed.push(5);
-mixed.push('mario');
-mixed.push(false);
-console.log(mixed);
-var ninja = {
-    name: 'hi',
-    age: 'hi'
+var greet;
+greet = function () {
+    console.log('hello, world');
 };
-ninja = {
-    name: 25,
-    age: 'yoshi'
+var add = function (a, b, c) {
+    if (b === void 0) { b = 10; }
+    if (c === void 0) { c = 10; }
+    console.log(a + b);
+    console.log(typeof c);
 };
+console.log(add(5, 10, '20'));
+var minus = function (a, b) {
+    console.log(a, b);
+};
+var result = minus(10, 7);

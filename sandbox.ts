@@ -1,28 +1,17 @@
-/* any type */
+let greet: Function;
 
-// 아래의 모든 것들이 잘 동작한다.
-let age: any = 25;
-age = true;
-console.log(age);
-age = 'hello';
-console.log(age);
-age = { name: 'luigi' };
-console.log(age);
-
-// 아래의 모든 것들이 다 동작한다.
-let mixed: any[] = [];
-
-mixed.push(5);
-mixed.push('mario');
-mixed.push(false);
-console.log(mixed);
-
-let ninja: { name: any; age: any } = {
-  name: 'hi',
-  age: 'hi',
+greet = () => {
+  console.log('hello, world');
 };
 
-ninja = {
-  name: 25,
-  age: 'yoshi',
+const add = (a: number, b: number = 10, c: number | string = 10) => {
+  console.log(a + b);
+  console.log(typeof c);
 };
+
+console.log(add(5, 10, '20'));
+
+const minus = (a: number, b: number): void => {
+  console.log(a, b);
+};
+let result = minus(10, 7);
