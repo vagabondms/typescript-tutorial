@@ -1,15 +1,11 @@
 export class Invoice {
-  // readonly client: string;
-  // private details: string;
-  // public amount: number;
-
   constructor(
-    readonly client: string, 
-    private details: string, 
-    public amount: number,
-  ){}
+    public client: string,
+    readonly details: string,
+    private amount: number
+  ) {}
 
   format() {
-    return `${this.client} owes £${this.amount} for ${this.details}`;
+    return `${this.client} owes $${this.amount} for ${this.details}`;
   }
 }
