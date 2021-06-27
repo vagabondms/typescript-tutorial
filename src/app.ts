@@ -1,63 +1,40 @@
-// Generics
-// 동적으로 타입을 적용하게 한다.
+import { Invoice } from './classes/Invoice.js';
+import { Payment } from './classes/Payment.js';
+import { hasFormatter } from './interfaces/hasformatter.js';
+import { ListTemplate } from './classes/ListTemplate.js';
 
-const addUID = (obj: object) => {
-  let uid = Math.floor(Math.random() * 100);
-  return { ...obj, uid };
-};
+const form = document.querySelector('.new-item-form') as HTMLFormElement;
 
-let docOne = addUID({ name: 'yoshi', age: 40 });
+const type = <HTMLSelectElement>document.querySelector('#type');
+const tofrom = document.querySelector('#tofrom') as HTMLInputElement;
+const details = document.querySelector('#details') as HTMLInputElement;
+const amount = document.querySelector('#amount') as HTMLSelectElement;
 
-/*
-  console.log(docOne.name); 
-  이 코드는 에러를 뱉는다. function이 받는 인자, 혹은 return 하는 요소가 'name' prop을 갖고 있는 지
-  정해주지 않았기 때문이다.
-  이를 generic으로 해결가능하다.
- */
+//list template instance
+const ul = document.querySelector('ul')!;
+const list = new ListTemplate(ul);
 
-const addUIDWGen = <T extends { name: string }>(obj: T) => {
-  let uid = Math.floor(Math.random() * 100);
-  return { ...obj, uid };
-};
+form.addEventListener('submit', (e: Event) => {
+  e.preventDefault();
 
-// let docTwo = addUIDWGen('hello');
-let docOneWGen = addUIDWGen({ name: 'yoshi', age: 40 });
+  let values: [string, string, number] = [
+    tofrom.value,
+    details.value,
+    parseInt(amount.value),
+  ];
 
-// with interfaces
+  let doc: hasFormatter;
+  if (type.value === 'invoice') {
+    doc = new Invoice(...values);
+  } else {
+    doc = new Payment(...values);
+  }
+  list.render(doc, type.value, 'end');
+});
 
-interface Resource<T> {
-  uid: number;
-  resourceName: number;
-  data: T;
-}
+// tuples
 
-let person: Resource<string>;
-person = {
-  uid: 1,
-  resourceName: 1,
-  data: 'hi',
-};
+let arr = ['ryu', 25, true];
+arr[0] = false;
 
-// ENUMS
-
-enum ResourceType {
-  BOOK,
-  AUTHOR,
-  FILM,
-  DIRECTOR,
-  PERSON,
-}
-
-const docFour: Resource<object> = {
-  uid: 1,
-  resourceName: ResourceType.BOOK,
-  data: { title: 'name of the wind' },
-};
-
-const docFive: Resource<object> = {
-  uid: 10,
-  resourceName: ResourceType.PERSON,
-  data: { name: 'yoshi' },
-};
-
-console.log(docFive);
+let tup: [string, number, boolean] = ['ryu', 25, true];
