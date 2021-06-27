@@ -1,3 +1,19 @@
+const me = {
+    // ! 아래에서 하나라도 없으면 에러
+    name: 'minseok',
+    age: 30,
+    speak(text) {
+        console.log(text);
+    },
+    spend(amount) {
+        console.log('I spend', amount);
+        return amount;
+    },
+};
+console.log(me);
+let greets = (person) => {
+    console.log(person.name);
+};
 import { Invoice } from './classes/Invoice.js';
 const invOne = new Invoice('mario', 'work on the mario website', 250);
 const invTwo = new Invoice('luigi', 'work on the mario website', 300);

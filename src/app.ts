@@ -1,3 +1,30 @@
+// interfaces
+interface IsPerson {
+  name: string;
+  age: number;
+  speak(a: string): void;
+  spend(a: number): number;
+}
+
+const me: IsPerson = {
+  // ! 아래에서 하나라도 없으면 에러
+  name: 'minseok',
+  age: 30,
+  speak(text: string): void {
+    console.log(text);
+  },
+  spend(amount: number): number {
+    console.log('I spend', amount);
+    return amount;
+  },
+};
+
+console.log(me);
+
+let greets = (person: IsPerson) => {
+  console.log(person.name);
+};
+
 import { Invoice } from './classes/Invoice.js';
 
 const invOne = new Invoice('mario', 'work on the mario website', 250);
