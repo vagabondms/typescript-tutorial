@@ -27,13 +27,37 @@ let docOneWGen = addUIDWGen({ name: 'yoshi', age: 40 });
 
 interface Resource<T> {
   uid: number;
-  resourceName: string;
-  data: Array<T>;
+  resourceName: number;
+  data: T;
 }
 
 let person: Resource<string>;
 person = {
   uid: 1,
-  resourceName: 'hi',
-  data: ['hi'],
+  resourceName: 1,
+  data: 'hi',
 };
+
+// ENUMS
+
+enum ResourceType {
+  BOOK,
+  AUTHOR,
+  FILM,
+  DIRECTOR,
+  PERSON,
+}
+
+const docFour: Resource<object> = {
+  uid: 1,
+  resourceName: ResourceType.BOOK,
+  data: { title: 'name of the wind' },
+};
+
+const docFive: Resource<object> = {
+  uid: 10,
+  resourceName: ResourceType.PERSON,
+  data: { name: 'yoshi' },
+};
+
+console.log(docFive);

@@ -21,6 +21,26 @@ let docOneWGen = addUIDWGen({ name: 'yoshi', age: 40 });
 let person;
 person = {
     uid: 1,
-    resourceName: 'hi',
-    data: ['hi'],
+    resourceName: 1,
+    data: 'hi',
 };
+// ENUMS
+var ResourceType;
+(function (ResourceType) {
+    ResourceType[ResourceType["BOOK"] = 0] = "BOOK";
+    ResourceType[ResourceType["AUTHOR"] = 1] = "AUTHOR";
+    ResourceType[ResourceType["FILM"] = 2] = "FILM";
+    ResourceType[ResourceType["DIRECTOR"] = 3] = "DIRECTOR";
+    ResourceType[ResourceType["PERSON"] = 4] = "PERSON";
+})(ResourceType || (ResourceType = {}));
+const docFour = {
+    uid: 1,
+    resourceName: ResourceType.BOOK,
+    data: { title: 'name of the wind' },
+};
+const docFive = {
+    uid: 10,
+    resourceName: ResourceType.PERSON,
+    data: { name: 'yoshi' },
+};
+console.log(docFive);
