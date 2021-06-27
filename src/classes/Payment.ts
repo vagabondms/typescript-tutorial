@@ -1,13 +1,13 @@
 import { hasFormatter } from '../interfaces/hasformatter';
 
-export class Invoice implements hasFormatter {
+export class Payment implements hasFormatter {
   constructor(
-    public client: string,
+    public recipient: string,
     readonly details: string,
     private amount: number
   ) {}
 
   format() {
-    return `${this.client} owes \$${this.amount} for ${this.details}`;
+    return `${this.recipient} is owed \$${this.amount} for ${this.details}`;
   }
 }
